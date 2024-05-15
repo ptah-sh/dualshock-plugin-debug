@@ -25,7 +25,12 @@ export class DualshockDebugPlugin extends Plugin<RpcServer> {
 					)
 					.returns(z.any())
 					.fn(async ({ args, name, context }) => {
-						return server.registry()[name].fn(args, context);
+						// TODO: reuse server's logic to call the handler. Need to run all the same validation steps.
+						const handler = registry[name];
+
+						await handler.args.parseAsync(args);
+
+						return handler.fn(args, context);
 					}),
 			);
 
