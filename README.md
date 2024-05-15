@@ -1,4 +1,4 @@
-# @ptah/dualshock
+# @ptah-sh/dualshock-plugin-debug
 
 Dualshock is the tiny bi-directional RPC implementation used to empower services ran by Ptah.sh.
 

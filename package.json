@@ -22,7 +22,7 @@
     "vitest": "^1.6.0"
   },
   "dependencies": {
-    "@ptah-sh/dualshock": "0.0.30",
+    "@ptah-sh/dualshock": "0.0.31",
     "pino": "^9.1.0",
     "zod": "^3.23.8"
   }
