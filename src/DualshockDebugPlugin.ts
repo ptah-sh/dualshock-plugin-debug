@@ -24,8 +24,8 @@ export class DualshockDebugPlugin extends Plugin<RpcServer> {
 						}),
 					)
 					.returns(z.any())
-					.fn(async ({ args, context }) => {
-						return server.registry()[args.name].fn(args.args, context);
+					.fn(async ({ args, name, context }) => {
+						return server.registry()[name].fn(args, context);
 					}),
 			);
 
