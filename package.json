@@ -1,6 +1,6 @@
 {
   "name": "@ptah-sh/dualshock-plugin-debug",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "The debug protocol implementation for Dualshock RPC Server",
   "type": "module",
   "main": "dist/src/index.js",
