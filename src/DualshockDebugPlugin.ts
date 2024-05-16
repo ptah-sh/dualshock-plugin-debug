@@ -1,4 +1,4 @@
-import { Plugin, rpc, type RpcServer } from "@ptah-sh/dualshock";
+import { Plugin, emits, rpc, type RpcServer } from "@ptah-sh/dualshock";
 import { z } from "zod";
 
 export class DualshockDebugPlugin extends Plugin<RpcServer> {
@@ -8,6 +8,23 @@ export class DualshockDebugPlugin extends Plugin<RpcServer> {
 
 	async setup(server: RpcServer): Promise<void> {
 		const registry = server.registry();
+
+		server
+			.ns("debug")
+			.ns("server")
+			.ns("clients")
+			.emits(
+				"connected",
+				emits().payload(z.object({ connectionId: z.string() })),
+			);
+		// .emits(
+		// 	"disconnected",
+		// 	emits().payload(z.object({ connectionId: z.string() })),
+		// );
+
+		server.onConnection((connectionId) => {
+			server.broadcast("debug:server:clients:connected", { connectionId });
+		});
 
 		server
 			.ns("debug")
